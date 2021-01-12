@@ -1,0 +1,32 @@
+.local-participant {
+  text-align: center;
+  margin-bottom: 2em;
+}
+.remote-participants {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  padding: 0 2em 2em;
+}
+.participant {
+  padding: 10px;
+  border-radius: 6px;
+  display: inline-block;
+  margin-right: 10px;
+}
+.participant:last-child {
+  margin-right: 0;
+}
+
+.participant h3 {
+  text-align: center;
+  padding-bottom: 0.5em;
+}
+
+video {
+  width: 100%;
+  max-width: 400px;
+  display: block;
+  margin: 0 auto;
+  border-radius: 6px;
+}

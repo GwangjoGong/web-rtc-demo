@@ -1,22 +1,20 @@
-import { Route, HashRouter as Router, Redirect } from "react-router-dom";
-import Lobby from "../routes/Lobby";
-import Login from "../routes/Login";
-import Room from "../routes/Room";
+import { Route, HashRouter as Router } from "react-router-dom";
+import VideoChat from "../routes/VideoChat";
 
 function App() {
   return (
-    <Router>
-      <Route path="/login">
+    <>
+      <h1>DM-RTC-POC</h1>
+      <Router>
+        {/* <Route path="/login">
         <Login />
-      </Route>
-      <Route path="/lobby">
-        <Lobby />
-      </Route>
-      <Route path="/room/:id">
-        <Room />
-      </Route>
-      <Redirect from="*" to="/login"></Redirect>
-    </Router>
+      </Route> */}
+        <Route path="/" exact>
+          <VideoChat />
+        </Route>
+        {/* <Redirect from="*" to="/login"></Redirect> */}
+      </Router>
+    </>
   );
 }
 
