@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const axiosInstance = axios.create({ baseURL: "http://54.180.211.107:4000" });
+const axiosInstance = axios.create({
+  baseURL: `https://dm-rtc-demo-server.herokuapp.com:4000`,
+});
 
 export const getToken = () => {
   return axiosInstance.get("/token");
