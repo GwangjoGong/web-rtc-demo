@@ -4,7 +4,7 @@ import VideoChat from "../routes/VideoChat";
 function App() {
   return (
     <>
-      <h1>DM-RTC-POC</h1>
+      <h1>DM-RTC-DEMO</h1>
       <Router>
         {/* <Route path="/login">
         <Login />
