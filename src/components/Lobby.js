@@ -1,20 +1,44 @@
-const Lobby = ({ roomName, handleRoomNameChange, handleSubmit }) => {
-  return (
-    <form onSubmit={handleSubmit}>
-      <h2>Enter a room</h2>
+import styled from "styled-components";
 
-      <div>
-        <label htmlFor="room">Room name:</label>
+const Room = styled.li`
+  text-decoration: underline;
+  cursor: pointer;
+  color: blue;
+`;
+
+const Lobby = ({
+  roomName,
+  handleRoomNameChange,
+  handleSubmit,
+  rooms,
+  onClickRoom,
+}) => {
+  return (
+    <>
+      <h2>Awesome Web RTC</h2>
+      <form onSubmit={handleSubmit}>
         <input
           type="text"
-          id="room"
+          placeholder="Room Name"
           value={roomName}
           onChange={handleRoomNameChange}
-          required
         />
-      </div>
-      <button type="submit">Submit</button>
-    </form>
+        <button type="submit">Create Room</button>
+      </form>
+      <h4>Rooms</h4>
+      <ul>
+        {rooms.map((room) => (
+          <Room
+            key={room.id}
+            onClick={() => {
+              onClickRoom(room);
+            }}
+          >
+            {room.name}
+          </Room>
+        ))}
+      </ul>
+    </>
   );
 };
 

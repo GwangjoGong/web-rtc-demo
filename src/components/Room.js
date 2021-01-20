@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import Video from "twilio-video";
 import Participant from "./Participant";
 
-const Room = ({ roomName, token, handleLogout }) => {
+const Room = ({ roomName, token, handleLogout, masterId, destroyRoom }) => {
   const [room, setRoom] = useState(null);
   const [participants, setParticipants] = useState([]);
+  const uid = localStorage.getItem("uid");
 
   const remoteParticipants = participants.map((participant) => (
     <Participant key={participant.sid} participant={participant} />
@@ -45,10 +46,21 @@ const Room = ({ roomName, token, handleLogout }) => {
     };
   }, [roomName, token]);
 
+  console.log(uid, masterId);
+
   return (
     <div className="room">
       <h2>Room: {roomName}</h2>
-      <button onClick={handleLogout}>Log out</button>
+      {uid === masterId && (
+        <button
+          onClick={() => {
+            destroyRoom(roomName);
+          }}
+        >
+          Finish
+        </button>
+      )}
+      <button onClick={handleLogout}>Exit</button>
       <div className="local-participant">
         {room ? (
           <Participant

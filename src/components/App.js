@@ -1,21 +1,33 @@
-import { Route, HashRouter as Router } from "react-router-dom";
+import {
+  Route,
+  HashRouter as Router,
+  Redirect,
+  Switch,
+} from "react-router-dom";
+import Landing from "../routes/Landing";
 import VideoChat from "../routes/VideoChat";
 
+const isLoggedIn = window.localStorage.getItem("uid");
+
 function App() {
-  return (
-    <>
-      <h1>DM-RTC-DEMO</h1>
-      <Router>
-        {/* <Route path="/login">
-        <Login />
-      </Route> */}
-        <Route path="/" exact>
-          <VideoChat />
-        </Route>
-        {/* <Redirect from="*" to="/login"></Redirect> */}
-      </Router>
-    </>
-  );
+  return <Router>{isLoggedIn ? <LoggedInRoute /> : <LoggedOutRoute />}</Router>;
 }
+
+const LoggedOutRoute = () => (
+  <Switch>
+    <Route path="/" exact>
+      <Landing></Landing>
+    </Route>
+    <Redirect to="/" />
+  </Switch>
+);
+
+const LoggedInRoute = () => (
+  <Switch>
+    <Route path="/" exact>
+      <VideoChat />
+    </Route>
+  </Switch>
+);
 
 export default App;
